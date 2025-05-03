@@ -1,0 +1,22 @@
+.products{
+    padding: 2rem 4rem;
+}
+
+.crouselmain{
+    width: 100%;        
+    height: 35rem;
+    overflow: hidden;
+    margin-top: 4rem;
+    max-height: 100vh;
+    max-width: 100vw;
+    border: 2px solid red;
+}
+
+@media (max-width: 680px) {
+    .crouselmain {
+        .products{
+            padding: 0rem 0rem;
+        }
+      height: 350px; /* Smaller height on smaller screens */
+    }
+  }

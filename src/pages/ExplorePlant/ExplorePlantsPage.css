@@ -1,0 +1,12 @@
+.exploreplant{
+    padding: 2rem 4rem;
+}
+
+
+
+
+@media (max-width: 680px) {
+    .crouselmain {
+      height: 350px; /* Smaller height on smaller screens */
+    }
+  }

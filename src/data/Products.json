@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "name": "Basil (Tulsi) Leaf Powder",
+    "image_link": "/assets/images/products/Basil Leaves Powder.jpg",
+    "price": "₹150",
+    "rating": "⭐4.5/5",
+    "review": "100% pure natural basil leaf powder known for its aromatic flavor and health benefits, including boosting immunity."
+  },
+  {
+    "id": 2,
+    "name": "Curry Leaves Powder",
+    "image_link": "/assets/images/products/Curry Leaf Powder.jpg",
+    "price": "₹100",
+    "rating": "⭐4.0/5",
+    "review": "A flavorful addition to many dishes, rich in antioxidants and used traditionally for hair health."
+  },
+  {
+    "id": 3,
+    "name": "Organic Bhringraj Powder",
+    "image_link": "/assets/images/products/Bhringraj Powder.jpg",
+    "price": "₹250",
+    "rating": "⭐4.8/5",
+    "review": "Ayurvedic support for hair health, known for promoting hair growth and enhancing shine."
+  },
+  {
+    "id": 4,
+    "name": "Chamomile Flower Powder",
+    "image_link":"/assets/images/products/Chamomile Powder.jpg",
+    "price": "₹200",
+    "rating": "⭐4.3/5",
+    "review": "Soothing flower powder used for relaxation and skin benefits, with a pleasant aroma."
+  },
+  {
+    "id": 5,
+    "name": "Clove Powder",
+    "image_link": "/assets/images/products/Clove Powder.jpg",
+    "price": "₹180",
+    "rating": "⭐4.6/5",
+    "review": "Rich in antioxidants and known for its benefits in oral hygiene and digestion."
+  },
+  {
+    "id": 6,
+    "name": "Fenugreek Seed",
+    "image_link":"/assets/images/products/Fenugreek Powder.jpg",
+    "price": "₹120",
+    "rating": "⭐4.4/5",
+    "review": "Packed with nutrients, fenugreek seeds are known for their medicinal properties, including blood sugar management."
+  },
+  {
+    "id": 7,
+    "name": "Ashwagandha Powder",
+    "image_link": "/assets/images/products/Ashwagandha Powder.jpg",
+    "price": "₹300",
+    "rating": "⭐4.7/5",
+    "review": "An adaptogen that helps alleviate stress and boost energy levels; a staple in Ayurvedic medicine."
+  },
+  {
+    "id": 8,
+    "name": "Eucalyptus Powder",
+    "image_link": "/assets/images/products/Eucalyptus Powder.jpg",
+    "price": "₹150",
+    "rating": "⭐4.2/5",
+    "review": "Known for its refreshing scent, eucalyptus powder is used for respiratory health and soothing sore muscles."
+  },
+  {
+    "id": 9,
+    "name": "Guduchi Powder",
+    "image_link":"/assets/images/products/Guduchi Powder.jpg",
+    "price": "₹180",
+    "rating": "⭐4.5/5",
+    "review": "An immune-modulating herb, Guduchi is valued in Ayurvedic practices for its health benefits."
+  },
+  {
+    "id": 10,
+    "name": "Haritaki Powder",
+    "image_link": "/assets/images/products/Haritaki Powder.jpg",
+    "price": "₹160",
+    "rating": "⭐4.1/5",
+    "review": "Known for its digestive health benefits, this powder supports overall wellness and detoxification."
+  },
+  {
+    "id": 11,
+    "name": "Arjuna Chaal Powder",
+    "image_link": "/assets/images/products/Arjuna Powder.jpg",
+    "price": "₹220",
+    "rating": "⭐4.3/5",
+    "review": "Traditional herbal remedy that supports heart health and overall wellness."
+  },
+  {
+    "id": 12,
+    "name": "Aloe Vera Gel",
+    "image_link": "/assets/images/products/Aloe Vera Gel.jpg",
+    "price": "₹200",
+    "rating": "⭐4.8/5",
+    "review": "99% pure Aloe Vera gel, perfect for skincare, hydration, and soothing burns."
+  },
+  {
+    "id": 13,
+    "name": "Lavender Flower Powder",
+    "image_link": "/assets/images/products/Lavender Powder.jpg",
+    "price": "₹190",
+    "rating": "⭐4.6/5",
+    "review": "Aromatic powder used for relaxation and in skincare to promote calmness."
+  },
+  {
+    "id": 14,
+    "name": "Amla Powder",
+    "image_link": "/assets/images/products/Amalaki Powder.jpg",
+    "price": "₹150",
+    "rating": "⭐4.5/5",
+    "review": "Rich in Vitamin C, Amla powder is known for enhancing beauty and overall health."
+  },
+  {
+    "id": 15,
+    "name": "Mustard Seeds Powder",
+    "image_link": "/assets/images/products/Mustard Powder.jpg",
+    "price": "₹80",
+    "rating": "⭐4.0/5",
+    "review": "Flavorful and nutritious, mustard seeds powder is a common spice in Indian cuisine."
+  },
+  {
+    "id": 16,
+    "name": "Moringa Powder",
+    "image_link": "/assets/images/products/Moringa Powder.jpg",
+    "price": "₹200",
+    "rating": "⭐4.7/5",
+    "review": "Nutrient-dense powder known for its health benefits, including supporting healthy metabolism."
+  },
+  {
+    "id": 17,
+    "name": "Lemongrass Powder",
+    "image_link": "/assets/images/products/Lemongrass Powder.jpg",
+    "price": "₹110",
+    "rating": "⭐4.2/5",
+    "review": "Refreshing herbal powder used in teas and cooking, known for its aromatic properties."
+  },
+  {
+    "id": 18,
+    "name": "Red Onion Powder",
+    "image_link": "/assets/images/products/Onion Powder.jpg",
+    "price": "₹130",
+    "rating": "⭐4.4/5",
+    "review": "Nutrient-rich powder that enhances flavor in cooking and offers health benefits."
+  },
+  {
+    "id": 19,
+    "name": "Peppermint Leaves Powder",
+    "image_link": "/assets/images/Products/peppermint powder.jpg",
+    "price": "₹120",
+    "rating": "⭐4.5/5",
+    "review": "Refreshing powder known for its digestive benefits and soothing properties."
+  },
+  {
+    "id": 20,
+    "name": "Baheda Powder",
+    "image_link": "/assets/images/products/Bibhitaki Powder.jpg",
+    "price": "₹150",
+    "rating": "⭐4.3/5",
+    "review": "Traditional herb known for its digestive and respiratory health benefits."
+  },
+  {
+    "id": 21,
+    "name": "Bay Leaf Powder",
+    "image_link": "/assets/images/products/Bay Leaf Powder.jpg",
+    "price": "₹140",
+    "rating": "⭐4.1/5",
+    "review": "Aromatic powder used to enhance flavors in cooking; also known for its health properties."
+  },
+  {
+    "id": 22,
+    "name": "Dandelion Root Powder",
+    "image_link": "/assets/images/products/Dandelion Powder.jpg",
+    "price": "₹250",
+    "rating": "⭐4.5/5",
+    "review": "Known for its detoxifying properties, beneficial for liver and digestive health."
+  },
+  {
+    "id": 23,
+    "name": "Neem Powder",
+    "image_link": "/assets/images/products/Neem Powder.jpg",
+    "price": "₹160",
+    "rating": "⭐4.7/5",
+    "review": "Well-known in Ayurveda for its antibacterial properties and skin benefits."
+  },
+  {
+    "id": 24,
+    "name": "Organic Turmeric Powder",
+    "image_link": "/assets/images/products/Turmeric Powder.jpg",
+    "price": "₹180",
+    "rating": "⭐4.8/5",
+    "review": "Known for its anti-inflammatory properties, turmeric powder is a staple in every kitchen."
+  },
+  {
+    "id": 25,
+    "name": "Saffron Powder",
+    "image_link": "/assets/images/products/Saffron Powder.jpg",
+    "price": "₹400",
+    "rating": "⭐4.9/5",
+    "review": "High-quality saffron used for flavoring and anti-aging benefits; a luxurious culinary ingredient."
+  },
+  {
+    "id": 26,
+    "name": "Shankhapushpi Powder",
+    "image_link": "/assets/images/products/Shankhapushpi Powder.jpg",
+    "price": "₹220",
+    "rating": "⭐4.5/5",
+    "review": "Herbal powder traditionally used to enhance memory and cognitive function."
+  }
+]
