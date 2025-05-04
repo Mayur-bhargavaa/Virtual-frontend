@@ -13,7 +13,7 @@ const HomeProducts = ({ addToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:8802/alldata/product")
+    axios.get("https://virtual-i6x5.onrender.com/alldata/product")
       .then((res) => {
         if (res.data?.data) setProductData(res.data.data);
       })

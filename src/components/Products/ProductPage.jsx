@@ -387,7 +387,7 @@ const ProductPage = ({ addToCart }) => {
   useEffect(() => {
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:8802/alldata/products"); // Your API endpoint
+      const response = await fetch("https://virtual-i6x5.onrender.com/alldata/products"); // Your API endpoint
       const result = await response.json();
       console.log("Raw API response:", result);
 

@@ -66,8 +66,8 @@ const Navbar = ({ setSelectedPlant, setShowDetail }) => {
     const fetchData = async () => {
       try {
         const [productRes, plantRes] = await Promise.all([
-          fetch("http://localhost:8802/alldata/product"),
-          fetch("http://localhost:8802/alldata/plants"),
+          fetch("https://virtual-i6x5.onrender.com/alldata/product"),
+          fetch("https://virtual-i6x5.onrender.com/alldata/plants"),
         ]);
 
         const rawProduct = await productRes.clone().text();
