@@ -78,7 +78,7 @@ const BlogComponent = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
   useEffect(() => {
-    fetch("https://virtual-i6x5.onrender.com/alldata/blogs") // ✅ Make sure this matches your backend
+    fetch("http://localhost:8802/alldata/blogs") // ✅ Make sure this matches your backend
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data.data)) {

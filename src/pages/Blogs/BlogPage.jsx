@@ -83,48 +83,53 @@ const BlogPage = () => {
 
       {/* Blog Detail Modal - Only visible when clicking "Read More" */}
       {showDetail && selectedBlog && (
-        <div className="modal-overlay" onClick={closeDetail}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-modal-btn" onClick={closeDetail}>X</button>
-            <h2>{selectedBlog.title}</h2>
-            <div className="modal-meta">
-              <span>🖊 {selectedBlog.author}</span> |{" "}
-              <span>🕒 {selectedBlog.readTime}</span> |{" "}
-              <span>📅 {new Date(selectedBlog.date).toLocaleDateString()}</span>
-            </div>
-            <div className="modal-body">
-              <div className="main-image-container">
-                <img
-                  src={selectedBlog.mainimage}
-                  alt={selectedBlog.title}
-                  className="main-image"
-                />
-              </div>
+  <div className="modal-overlay" onClick={closeDetail}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="close-modal-btn" onClick={closeDetail}>✖</button>
+      <h2 className="modal-title">{selectedBlog.title}</h2>
 
-              <p>{selectedBlog.description}</p>
+      <div className="modal-meta">
+        <span>✍️ {selectedBlog.author}</span>
+        <span>⏱️ {selectedBlog.readTime}</span>
+        <span>📅 {new Date(selectedBlog.date).toLocaleDateString()}</span>
+      </div>
 
-              <h4>🌿 Plants Mentioned:</h4>
-              <ul>
-                {selectedBlog.plantsMentioned.map((plant, idx) => (
-                  <li key={idx}>{plant}</li>
-                ))}
-              </ul>
-
-              <h4>💡 Usage Tips:</h4>
-              <p>{selectedBlog.usageTips}</p>
-
-              {/* Optional Tags */}
-              {selectedBlog.tags && (
-                <div className="tags-container">
-                  {selectedBlog.tags.map((tag, idx) => (
-                    <span key={idx} className="tag-badge">#{tag}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+      <div className="modal-body">
+        <div className="main-image-container">
+          <img
+            src={selectedBlog.mainimage}
+            alt={selectedBlog.title}
+            className="main-image"
+          />
         </div>
-      )}
+
+        <p className="description">{selectedBlog.description}</p>
+
+        <div className="section">
+          <h4>🌿 Plants Mentioned:</h4>
+          <ul className="plants-list">
+            {selectedBlog.plantsMentioned.map((plant, idx) => (
+              <li key={idx} className="plant-item">{plant}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="section">
+          <h4>💡 Usage Tips:</h4>
+          <p className="tips">{selectedBlog.usageTips}</p>
+        </div>
+
+        {selectedBlog.tags && (
+          <div className="tags-container">
+            {selectedBlog.tags.map((tag, idx) => (
+              <span key={idx} className="tag-badge">#{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
     </section>
   );
 };

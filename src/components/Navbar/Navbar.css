@@ -455,6 +455,7 @@ display: none;
 
 .search-results li {
   margin: 5px 0;
+  cursor: pointer;
 }
 .mobile-menu {
   display: none;
@@ -487,7 +488,7 @@ display: none;
     justify-content: space-between;
     align-items: center;
     /* padding: 0 1rem; */
-    gap: 108px;
+    gap: 166px;
   }
 
   .hamburger-menu {
@@ -571,8 +572,8 @@ display: none;
   }
   .search-bar {
     position: absolute;
-    right: 4.999rem;
-    top: -0.3rem;
+    right: 84px;
+    top: -11px;
     background-color: #ffffff;
     padding: 0.4rem 0.6rem;
     border-radius: 20px;
@@ -583,8 +584,21 @@ display: none;
   border: none;
   outline: none;
   padding: 0.4rem 0.6rem;
-  width: 90px;
+  width: 140px;
   font-size: 0.95rem;
   color: #333;
+}
+.search-results {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 43%;
+  position: fixed;
+  z-index: 999;
+  color: black;
+  right: 125px;
+  top: 135px;
 }
 }

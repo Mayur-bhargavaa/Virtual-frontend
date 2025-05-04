@@ -13,7 +13,7 @@ const HomeProducts = ({ addToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("https://virtual-i6x5.onrender.com/alldata/product")
+    axios.get("http://localhost:8802/alldata/product")
       .then((res) => {
         if (res.data?.data) setProductData(res.data.data);
       })
@@ -74,8 +74,8 @@ const HomeProducts = ({ addToCart }) => {
       <h2 className="carousel-title">Explore Our Herbal Products</h2>
       <Slider {...settings}>
         {productData.map((product) => (
-          <div className="carousel-product-card" key={product._id}  onClick={() => handleClick(product)}>
-            <div className="product-image-wrapper">
+          <div className="carousel-product-card" key={product._id}  >
+            <div className="product-image-wrapper" onClick={() => handleClick(product)}>
               <img src={product.image_link} alt={product.name} />
               <div className="product-overlay">
                 <h3 className="overlay-title">{product.name}</h3>

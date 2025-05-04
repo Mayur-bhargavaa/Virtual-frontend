@@ -1,20 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
 import { FiAlignJustify } from "react-icons/fi"; // Hamburger icon
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ setSelectedPlant, setShowDetail }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false); // Track mobile menu visibility
-
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [plants, setPlants] = useState([]);
-
+  const handlePlantClick = (plantData) => {
+    // Format the clicked plant data (plantData is already structured correctly)
+    const formattedPlant = {
+      title: plantData.commonName || "Unknown Plant",
+      commonName: plantData.commonName || "Unknown",
+      sanskritName: plantData.sanskritName || "Sanskrit Name",
+      botanicalName: plantData.botanicalName || "Botanical Name",
+      image: plantData.image_link || "https://via.placeholder.com/150",
+      description: plantData.sanskritName || "No Sanskrit Name available",
+      modelUrl: plantData.modelname || "/models/DefaultModel.glb",  // Use the model name from plantData or a default
+      size: plantData.plantSize || "Medium",
+      nativeRegion: plantData.nativeRegion || "India",
+      preferredClimate: plantData.preferredClimate || "Tropical",
+      requiredSunlight: plantData.requiredSunlight || "Full Sun",
+      requiredSoil: plantData.requiredSoil || "Loamy",
+      partsUsed: plantData.partsUsedInMedicine || ["Leaves"],
+      activeCompounds: plantData.activeCompounds || ["Flavonoids"],
+      therapeuticProperties: plantData.therapeuticProperties || ["Anti-inflammatory", "Digestive"],
+      dosageForms: plantData.dosageForm || ["Powder", "Capsule"],
+      ayushApplications: plantData.ayushApplications || ["Used in Ayurvedic medicine for respiratory health.", "Helps in reducing stress."],
+      healthBenefits: plantData.healthBenefits || ["Boosts immunity", "Reduces stress", "Supports respiratory health"]
+    };
+  
+    console.log("Formatted Plant Data:", formattedPlant);
+    setSelectedPlant(formattedPlant);  // Update the state with the formatted plant data
+    setShowDetail(true); // Show the PlantDetail modal or page
+  };
+  
+  
+  
   const normalizeString = (str) => {
     return str && typeof str === "string" ? str.replace(/\s+/g, "").toLowerCase() : "";
   };
@@ -36,8 +66,8 @@ const Navbar = () => {
     const fetchData = async () => {
       try {
         const [productRes, plantRes] = await Promise.all([
-          fetch("https://virtual-i6x5.onrender.com/alldata/product"),
-          fetch("https://virtual-i6x5.onrender.com/alldata/plants"),
+          fetch("http://localhost:8802/alldata/product"),
+          fetch("http://localhost:8802/alldata/plants"),
         ]);
 
         const rawProduct = await productRes.clone().text();
@@ -47,9 +77,11 @@ const Navbar = () => {
         const plantData = JSON.parse(rawPlant);
 
         const fetchedProducts = Array.isArray(productData.data)
-          ? productData.data
-          : productData.products || [];
+        ? productData.data
+        : productData.products || [];
         const fetchedPlants = Array.isArray(plantData.data) ? plantData.data : [];
+        console.log("Fetched Products:", fetchedProducts);
+        
         setProducts(fetchedProducts);
         setPlants(fetchedPlants);
       } catch (err) {
@@ -77,6 +109,13 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => setShowMobileMenu((prev) => !prev);
 
+  const handleClick = (product) => {
+    // setSelectedProduct(product);
+    navigate(`/product/${product._id}`, {
+      state: { product }, // Pass full product object
+    });
+  };
+  
   return (
     <>
       <header className={`navbar-container ${scrolled ? "scrolled" : ""}`}>
@@ -134,7 +173,8 @@ const Navbar = () => {
         <div className="search-results">
           <ul>
             {matchedProducts.map((product, index) => (
-              <li key={index}>{product.name}</li>
+            
+            <li key={index} onClick={() => handleClick(product)}>{product.name}</li>
             ))}
           </ul>
           <ul>
@@ -144,9 +184,9 @@ const Navbar = () => {
                   {matchedPlants.map((item, index) => {
                     const plantData = item.plant; // Accessing the plant data
                     return (
-                      <li key={index}>
-                        {plantData.commonName}
-                      </li>
+                      <li key={index} onClick={() => handlePlantClick(plantData)}>
+                      {plantData.commonName}
+                    </li>
                     );
                   })}
                 </ul>

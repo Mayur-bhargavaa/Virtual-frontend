@@ -604,3 +604,59 @@ h4 {
   border-top: 1px solid #ddd;
   margin: 12px 0;
 }
+@media (max-width: 768px) {
+  .cart-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-left,
+  .cart-right {
+    flex: 1;
+  }
+
+  .cart-item-card {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .cart-item-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item-main-content {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .quantity-controls {
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .coupon-section,
+  .address-section {
+    margin-top: 20px;
+  }
+
+  .summary-section {
+    margin-top: 20px;
+  }
+
+  .pay-now-btn {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  .cart-page-container {
+    padding: 0px 0px;
+    margin-top: 143px;
+    background: #f9f9f9;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    text-align: center;
+}
+}

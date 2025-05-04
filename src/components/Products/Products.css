@@ -73,6 +73,7 @@
   .cart-btn {
     background: #a7e97b;
     color: black;
+    /* z-index: 999; */
   }
   .cart-btn:hover {
     background: #c4ff94;
@@ -127,7 +128,77 @@
 }
 
 /* Overlay for background blur and dark effect */
+@media (max-width: 1024px) {
+  .home-products-title {
+    font-size: 2.2rem;
+  }
 
+  .product-grid-container {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-products {
+    padding: 1.5rem;
+  }
+
+  .home-products-title {
+    font-size: 2rem;
+  }
+
+  .product-card {
+    max-width: 200px;
+    padding: 1rem;
+  }
+
+  .product-card h3 {
+    font-size: 1rem;
+  }
+
+  .cart-btn,
+  .quick-view-btn {
+    font-size: 0.85rem;
+    min-width: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-products {
+    padding: 1rem;
+  }
+
+  .home-products-title {
+    font-size: 1.7rem;
+  }
+
+  .product-grid-container {
+    gap: 1rem;
+  }
+
+  .product-card {
+    max-width: 100%;
+    width: 90%;
+  }
+  .carousel-title {
+    font-size: 1.3rem;
+}
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .cart-btn,
+  .quick-view-btn {
+    width: 100%;
+  }
+}
 /* Mobile responsiveness */
 @media (max-width: 480px) {
   /* Adjust the modal box on small screens */
@@ -159,6 +230,11 @@
   .product-modal-box {
     overflow-y: auto;
   }
+  .quantity-box {
+    display: flex;
+    align-items: center;
+    gap: 2rem !important;
+}
 }
 
 
@@ -320,10 +396,12 @@
     gap: 0.3rem;
     border: 1px solid #fff;
     width: 70%;
-}
+    z-index: 999 !important; 
+} 
 .overlay-buttons {
   display: flex;
   gap: 1.5rem;
+  z-index: 999;
 }
 
 .wishlist-btn-overlay {
@@ -429,7 +507,7 @@
 .quantity-box {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .quantity-box button {

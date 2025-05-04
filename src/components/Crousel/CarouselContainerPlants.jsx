@@ -5,7 +5,7 @@ import './Carousel.css'
 
 
 function CarouselContainerPlants({ heading  }) {
-  const apiUrl = 'https://virtual-i6x5.onrender.com/alldata/product'; // Replace with your API URL
+  const apiUrl = 'http://localhost:8802/alldata/product'; // Replace with your API URL
   const [data, setData] = useState([]);
 console.log("api usrl is :- ", apiUrl)
   useEffect(() => {
