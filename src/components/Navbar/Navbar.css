@@ -488,7 +488,7 @@ display: none;
     justify-content: space-between;
     align-items: center;
     /* padding: 0 1rem; */
-    gap: 240px;
+    gap: 220px;
   }
 
   .hamburger-menu {
