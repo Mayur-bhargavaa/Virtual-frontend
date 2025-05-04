@@ -7,7 +7,7 @@ import CartContainer from "./components/Cart/CartContainer";
 import ExplorePlants from "./pages/ExplorePlant/ExplorePlantsPage";
 import Blogs from "./pages/Blogs/BlogPage";
 import ScrollToTop from "./components/ScrolltoTOp/ScrollToTop";
-import Contact from "./pages/contact/contact";
+// import Contact from "./pages/contact/contact";
 import Profile from "./pages/Profile/Profile";
 import Reviews from "./pages/Review/Review";
 import Aboutus from "./pages/Aboutus/Aboutus";
@@ -131,7 +131,7 @@ const App = () => {
         <Route path="/product" element={<Products addToCart={addToCart}/>} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
