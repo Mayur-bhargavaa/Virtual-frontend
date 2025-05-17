@@ -78,7 +78,7 @@ const BlogComponent = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
   useEffect(() => {
-    fetch("https://virtual-i6x5.onrender.com/alldata/blogs") // ✅ Make sure this matches your backend
+    fetch("http://localhost:8802/alldata/blogs") // ✅ Make sure this matches your backend
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data.data)) {
@@ -132,21 +132,58 @@ const BlogComponent = () => {
         <Link to="/blogs" className="explore-more-btn-blog">More</Link>
       </div> */}
 
-      {showModal && selectedBlog && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-            <img src={selectedBlog.mainImage} alt={selectedBlog.title} />
-            <h3>{selectedBlog.title}</h3>
-            <p><strong>Author:</strong> {selectedBlog.author}</p>
-            <p><strong>Date:</strong> {new Date(selectedBlog.date).toDateString()}</p>
-            <p><strong>Read Time:</strong> {selectedBlog.readTime}</p>
-            <p><strong>Description:</strong> {selectedBlog.description}</p>
-            <p><strong>Plants Mentioned:</strong> {selectedBlog.plantsMentioned.join(', ')}</p>
-            <p><strong>Usage Tips:</strong> {selectedBlog.usageTips}</p>
-            <button className="close-btn" onClick={() => setShowModal(false)}>Close</button>
-          </div>
+     {showModal && selectedBlog && (
+  <div className="modal-overlay" onClick={() => setShowModal(false)}>
+    <div className="modal-glass-container" onClick={(e) => e.stopPropagation()}>
+      <button className="modal-close-btn" onClick={() => setShowModal(false)}>×</button>
+
+      <div className="modal-grid-images">
+        <div className="image-box image-thumbnail">
+          <img src={selectedBlog.thumbnail} alt="Thumbnail" />
+          <div className="image-label">Thumbnail</div>
         </div>
-      )}
+        <div className="image-box image-main">
+          <img src={selectedBlog.mainImage || selectedBlog.mainimage} alt="Main" />
+          <div className="image-label">Main Image</div>
+        </div>
+      </div>
+
+      <h2 className="modal-title">{selectedBlog.title}</h2>
+      <div className="modal-meta-info">
+        <span>🖊 {selectedBlog.author}</span> |{" "}
+        <span>🕒 {selectedBlog.readTime}</span> |{" "}
+        <span>📅 {new Date(selectedBlog.date).toDateString()}</span>
+      </div>
+
+      <p className="modal-description">{selectedBlog.description}</p>
+
+      <div className="modal-section">
+        <h4>🌿 Plants Mentioned</h4>
+        <ul className="plant-list">
+          {selectedBlog.plantsMentioned.map((plant, idx) => (
+            <li key={idx}>🌱 {plant}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="modal-section usage-tips">
+        <h4>💡 Usage Tips</h4>
+        <p>{selectedBlog.usageTips}</p>
+      </div>
+
+      <div className="modal-section">
+        <h4>🏷 Tags</h4>
+        <div className="tag-list">
+          {selectedBlog.tags.map((tag, idx) => (
+            <span key={idx} className="tag-item">#{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+
     </section>
   );
 };

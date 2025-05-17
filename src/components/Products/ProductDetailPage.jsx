@@ -1,12 +1,13 @@
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer"; // Adjust path
 import "./Products.css"; // New CSS file
-
-export default function ProductDetailPage() {
+import { ToastContainer, toast } from 'react-toastify';
+export default function ProductDetailPage({addToCart}) {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-
+  const [quantities, setQuantities] = useState({});
   if (!product) {
     return (
       <div className="product-error">
@@ -15,6 +16,32 @@ export default function ProductDetailPage() {
       </div>
     );
   }
+  const handleAddToCart = (product) => {
+    const quantity = quantities?.[product._id] || 1;
+    const item = {
+      id: product._id,
+      name: product.name || "Unnamed Product",
+      image: product.image_link || "default-image.jpg",
+      price: product.price,
+      quantity,
+    };
+    addToCart(item);
+  };
+  
+
+  const increaseQuantity = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 1) + 1,
+    }));
+  };
+
+  const decreaseQuantity = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: Math.max(1, (prev[id] || 1) - 1),
+    }));
+  };
 
   return (
     <>
@@ -31,10 +58,10 @@ export default function ProductDetailPage() {
           <p className="rating">Rating:- {product.rating}</p>
 
           <div className="quantity-box">
-            <button>-</button>
+            <button onClick={decreaseQuantity}>-</button>
             <span>1</span>
-            <button>+</button>
-          <button className="add-cart-btn">Add to Cart</button>
+            <button onClick={increaseQuantity}>+</button>
+          <button className="add-cart-btn" onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
 
           <div className="faqs-box">
@@ -65,7 +92,7 @@ export default function ProductDetailPage() {
         <p className="rating">⭐ {product.rating}</p>
       </section>
 
-      
+      <ToastContainer/> 
     </div>
     <Footer />
     </>

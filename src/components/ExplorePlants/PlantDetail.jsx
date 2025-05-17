@@ -337,13 +337,13 @@ const PlantDetail = ({ plant, onClose }) => {
           <h2 className="modal-heading">{plant.commonName}</h2>
                 <div className="viewer-content">
                   {viewType === "image" ? (
-                    <img src={plant.image} alt={plant.title} className="viewer-image" />
+                    <img src={plant.image || plant.image_link} alt={plant.title} className="viewer-image" />
                   ) : (
                     plant.modelUrl && (
                       <div className="viewer-model">
                         <Canvas camera={{ position: [0, 1.5, 6], fov: 60 }}>
                           <PlantModelViewer
-                            modelUrl={plant.modelUrl}
+                            modelUrl={plant.modelUrl|| "/models/AloeVera.glb"}
                             isFloating={viewType === "auto"}
                             enableControls={viewType === "model"}
                           />

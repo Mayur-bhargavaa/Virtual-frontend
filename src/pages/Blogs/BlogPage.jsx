@@ -19,8 +19,8 @@ const BlogPage = () => {
           author: "GreenBloom Author", // Fake Author
           date: item.date || new Date().toISOString(), // Use API date if available or fallback to current date
           tags: ["Gardening", "Plants", "Green Tips"], // Example tags
-          thumbnail: item.image || "https://via.placeholder.com/300x200",
-          mainimage: item.mainimage || "https://via.placeholder.com/300x200",
+          thumbnail: item.thumbnail || "https://via.placeholder.com/300x200",
+          mainimage: item.mainImage || "https://via.placeholder.com/300x200",
           excerpt: item.description.slice(0, 100) + "...", // First 100 chars
           readTime: Math.floor(Math.random() * 5 + 3) + " min", // Random read time between 3-8 min
           description: item.description, // Full description
@@ -82,49 +82,56 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Detail Modal - Only visible when clicking "Read More" */}
-      {showDetail && selectedBlog && (
-        <div className="modal-overlay" onClick={closeDetail}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-modal-btn" onClick={closeDetail}>X</button>
-            <h2>{selectedBlog.title}</h2>
-            <div className="modal-meta">
-              <span>🖊 {selectedBlog.author}</span> |{" "}
-              <span>🕒 {selectedBlog.readTime}</span> |{" "}
-              <span>📅 {new Date(selectedBlog.date).toLocaleDateString()}</span>
-            </div>
-            <div className="modal-body">
-              <div className="main-image-container">
-                <img
-                  src={selectedBlog.mainimage}
-                  alt={selectedBlog.title}
-                  className="main-image"
-                />
-              </div>
+     {showDetail && selectedBlog && (
+  <div className="modal-overlay" onClick={closeDetail}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="close-modal-btn" onClick={closeDetail}>×</button>
 
-              <p>{selectedBlog.description}</p>
+      <h2 className="modal-title">{selectedBlog.title}</h2>
 
-              <h4>🌿 Plants Mentioned:</h4>
-              <ul>
-                {selectedBlog.plantsMentioned.map((plant, idx) => (
-                  <li key={idx}>{plant}</li>
-                ))}
-              </ul>
+      <div className="modal-meta">
+        <span>🖊 {selectedBlog.author}</span> |{" "}
+        <span>🕒 {selectedBlog.readTime}</span> |{" "}
+        <span>📅 {new Date(selectedBlog.date).toLocaleDateString()}</span>
+      </div>
 
-              <h4>💡 Usage Tips:</h4>
-              <p>{selectedBlog.usageTips}</p>
+      {/* Image Gallery */}
+      <div className="image-gallery">
+        <img
+          src={selectedBlog.thumbnail || "https://via.placeholder.com/300x200?text=Thumbnail"}
+          alt="Thumbnail"
+          className="thumbnail-image"
+        />
+        <img
+          src={selectedBlog.mainimage || "https://via.placeholder.com/800x400?text=Main+Image"}
+          alt="Main"
+          className="main-image"
+        />
+      </div>
 
-              {/* Optional Tags */}
-              {selectedBlog.tags && (
-                <div className="tags-container">
-                  {selectedBlog.tags.map((tag, idx) => (
-                    <span key={idx} className="tag-badge">#{tag}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+      <p className="modal-description">{selectedBlog.description}</p>
+
+      <h4>🌿 Plants Mentioned:</h4>
+      <ul className="plant-list">
+        {selectedBlog.plantsMentioned.map((plant, idx) => (
+          <li key={idx}>{plant}</li>
+        ))}
+      </ul>
+
+      <h4>💡 Usage Tips:</h4>
+      <p className="modal-description">{selectedBlog.usageTips}</p>
+
+      {selectedBlog.tags && (
+        <div className="tags-container">
+          {selectedBlog.tags.map((tag, idx) => (
+            <span key={idx} className="tag-badge">#{tag}</span>
+          ))}
         </div>
       )}
+    </div>
+  </div>
+)}
+
     </section>
   );
 };

@@ -17,13 +17,17 @@ import SignUp from "./pages/Authentication/SignUp";
 import Quiz from "./pages/Quiz/Quiz";
 import Cart from "./components/Cart/CartContainer";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import PlantDetail from "./components/ExplorePlants/PlantDetail";
+import { AuthProvider } from "./pages/Authentication/AuthContext";
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
   const closeSidebar = () => setSidebarOpen(false);
-
+  const [selectedPlant, setSelectedPlant] = useState(null);
+  const [showDetail, setShowDetail] = useState(false);
   // const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
@@ -49,7 +53,9 @@ const App = () => {
     }
   }, []);
 
-
+  const closeDetail = () => {
+    setShowDetail(false); // Hide the plant detail
+  };
   // ✅ Save cart to localStorage on change
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -71,13 +77,18 @@ const App = () => {
           : item
       );
       setCartItems(updatedItems);
-      alert(`${normalizedProduct.title} quantity updated in cart.`);
+      toast.success(`${normalizedProduct.title} quantity updated in cart.`, {
+        autoClose: 3000,
+        hideProgressBar: true,
+      });
     } else {
-      const confirmed = window.confirm(`Add ${normalizedProduct.quantity} x ${normalizedProduct.title} to your cart?`);
-      if (confirmed) {
+      // const confirmed = window.confirm(`Add ${normalizedProduct.quantity} x ${normalizedProduct.title} to your cart?`);
         setCartItems(prev => [...prev, normalizedProduct]);
-        alert("Added to cart!");
-      }
+        console.log("Added to cart:", normalizedProduct);
+        toast.success(`${normalizedProduct.title} Added in art.`, {
+          autoClose: 3000,
+          hideProgressBar: true,
+        });
     }
   };
   
@@ -86,6 +97,10 @@ const App = () => {
   const removeFromCart = (productId) => {
     const updatedItems = cartItems.filter(item => item.id !== productId);
     setCartItems(updatedItems);
+    toast.success("Item removed from cart.", {
+      autoClose: 3000,
+      hideProgressBar: true,
+    });
   };
 
   const updateCartItemQuantity = (productId, newQuantity) => {
@@ -101,8 +116,9 @@ const App = () => {
   return (
     <>
     <Router>
+      <AuthProvider>
     <ScrollToTop /> 
-      <Navbar toggleSidebar={toggleSidebar} setShowCart={setShowCart} cartItems={cartItems}/>
+      <Navbar toggleSidebar={toggleSidebar} setShowCart={setShowCart} cartItems={cartItems} setSelectedPlant={setSelectedPlant} setShowDetail={setShowDetail}/>
       <Sidebar isOpen={sidebarOpen} closeSidebar={closeSidebar} />
       {sidebarOpen && <div className="sidebar-overlay" onClick={closeSidebar}></div>}      
       {/* {showCart && ( 
@@ -121,7 +137,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/quiz" element={<Quiz />} />
-        <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage addToCart={addToCart} />} />
         <Route
           path="/cart"
           element={
@@ -133,8 +149,12 @@ const App = () => {
           }
         />
       </Routes>
+      </AuthProvider>
     </Router>
-    
+    {/* <ToastContainer /> */}
+    {showDetail && selectedPlant && (
+        <PlantDetail plant={selectedPlant} onClose={closeDetail} />
+      )}
     </>
   );
 };

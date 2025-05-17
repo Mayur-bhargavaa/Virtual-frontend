@@ -61,30 +61,33 @@
   @media (max-width: 768px) {
     .about-container {
       flex-direction: column;
-      gap: 20px;
       text-align: center;
     }
   
-    .about-text,
     .about-image {
-      flex: 0 0 auto;
+      order: 1; /* Image first */
       width: 100%;
     }
   
-    .about-text h2 {
-      font-size: 2rem;
+    .about-text {
+      order: 2;
+      width: 100%;
+    }
+  
+    .about-image img {
+      width: 100%;
+      margin: auto;
+      height: 100%;
     }
   
     .about-text p {
       font-size: 1rem;
     }
   
-    .about-image img {
-      width: 90%;
-      margin: auto;
+    .about-text h2 {
+      font-size: 2rem;
     }
   }
-
   .about-button {
     display: inline-block;
     margin-top: 20px;

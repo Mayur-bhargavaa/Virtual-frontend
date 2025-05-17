@@ -1,6 +1,9 @@
 import React, { useState , useEffect} from "react";
 import "./CartContainer.css";
 import { FaMinus, FaPlus, FaTrash, FaTimes } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';  // Make sure this is included
+
 const EnhancedCartContainer = ({
   cartItems,
   removeFromCart,
@@ -52,7 +55,15 @@ const EnhancedCartContainer = ({
     setAddressData(formData);
     setShowAddressModal(false);
   };
-
+  const handleOrder = () => {
+    console.log("Order function called"); // Debug log
+    toast.success(`Coming Soon......`, {
+      // position: toast.POSITION.BOTTOM_CENTER,  // Centered horizontally at the bottom
+      autoClose: 3000,
+      hideProgressBar: true,
+      // className: 'custom-toast',  // Add custom class
+    });
+  };
   return (
     <div className="cart-page-container">
       <div className="top-header"></div>
@@ -67,7 +78,7 @@ const EnhancedCartContainer = ({
               <div className="cart-left">
                 {cartItems.map((item) => (
                   <div className="cart-item-card" key={item.id}>
-                    <img src={item.image_link} alt={item.name} />
+                    <img src={item.image_link || item.image} alt={item.name} />
 
                     <div className="item-main-content">
                       <div className="item-info-section">
@@ -90,7 +101,7 @@ const EnhancedCartContainer = ({
                             </div>
                           </div>
                         </div>
-                        <div className="item-price">₹{(subtotal.toFixed(0))}</div>
+                        <div className="item-price">{(item.price)}</div>
                       </div>
 
                       <FaTrash className="remove-icon" onClick={() => removeFromCart(item.id)} />
@@ -328,17 +339,19 @@ const EnhancedCartContainer = ({
       </div>
 
       <div className="payment-options">
-        <button className="submit" onClick={() => console.log("Coming soon... COD")}>
+        <button className="submit" onClick={() => handleOrder()}>
           Cash on Delivery
         </button>
-        <button className="submit" onClick={() => console.log("Coming soon... UPI / Cards / Net Banking")}>
+        <button className="submit" onClick={() => handleOrder()}>
           UPI / Cards / Net Banking
         </button>
       </div>
     </div>
   </div>
 )}
+ <ToastContainer />
     </div>
+
   );
 };
 

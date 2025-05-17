@@ -17,7 +17,7 @@
 //   useEffect(() => {
 //     const fetchPlants = async () => {
 //       try {
-//         const response = await fetch("https://virtual-i6x5.onrender.com/alldata/plants"); // Replace with your real API
+//         const response = await fetch("http://localhost:8802/alldata/plants"); // Replace with your real API
 //         const data = await response.json();
 
       
@@ -164,11 +164,8 @@ const ExplorePlants = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await fetch("https://virtual-i6x5.onrender.com/alldata/plants"); // Replace with your real API
+        const response = await fetch("http://localhost:8802/alldata/plants"); // Replace with your real API
         const data = await response.json();
-
-      
-
         const formattedData = data.data.map(item => ({
           title: item.plant.commonName || "Unknown Plant",  // Use commonName here if you want
           commonName: item.plant.commonName || "Unknown",
@@ -176,7 +173,7 @@ const ExplorePlants = () => {
           botanicalName: item.plant.botanicalName || "Botanical Name",
           image: item.plant.image_link || "https://via.placeholder.com/150",
           description: item.plant.sanskritName || "No Sanskrit Name available",
-          modelUrl: "/models/AloeVera.glb",
+          modelUrl: item.plant.modelname || "/models/DefaultModel.glb", 
           size: item.plant.plantSize || "Medium",
           nativeRegion: item.plant.nativeRegion || "India",
           preferredClimate: item.plant.preferredClimate || "Tropical",
